@@ -15,19 +15,21 @@ function driverNamesWithRevenueOver(drivers, revenue){
 }
 
 function exactMatch(array, value){
-    return array.filter(driver => driver.name == value.name || driver.revenue === value.revenue);
+    return array.filter(driver => driver.name === value.name || driver.revenue === value.revenue);
 }
 
 function exactMatchToList(extendedDrivers, hash){
-    let matchList = [];
-    for (const key in extendedDrivers){
-        if (typeof extendedDrivers[key] === 'object') {
-          for (const nestedKey in extendedDrivers[key]) {
-            if (extendedDrivers[key][nestedKey] === Object.values(hash)[0]){
-                matchList.push(extendedDrivers[key].name);
-            }
-          }
-        }
-    }
-    return matchList;
+    // let matchList = [];
+    // for (const key in extendedDrivers){
+    //     if (typeof extendedDrivers[key] === 'object') {
+    //       for (const nestedKey in extendedDrivers[key]) {
+    //         if (extendedDrivers[key][nestedKey] === Object.values(hash)[0]){
+    //             matchList.push(extendedDrivers[key].name);
+    //         }
+    //       }
+    //     }
+    // }
+    // return matchList;
+
+    return exactMatch(extendedDrivers, hash).map( driver => driver.name);
 }
